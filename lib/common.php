@@ -88,7 +88,7 @@ $CFG->timezone_offset = $dtz->getOffset($dtz1);
 /* Detect Language */
 $CFG->lang_table = $query['Lang']['getTable']['results'][0];
 $lang = (!empty($_REQUEST['lang'])) ? preg_replace("/[^a-z]/", "",strtolower($_REQUEST['lang'])) : false;
-if ($lang && in_array($lang,array('en','es','ru','zh','pt')))  {
+if ($lang && in_array($lang,array('en','es')))  {
 	$CFG->language = $lang;
 	$_SESSION['language'] = $lang;
 	if (User::isLoggedIn())
@@ -97,8 +97,8 @@ if ($lang && in_array($lang,array('en','es','ru','zh','pt')))  {
 elseif (!empty($_SESSION['language']))
 	$CFG->language = $_SESSION['language'];
 elseif (empty($_SESSION['language'])) {
-	$_SESSION['language'] = 'en';
-	$CFG->language = 'en';
+	$_SESSION['language'] = 'es';
+	$CFG->language = 'es';
 }
 
 /* Get Currencies */

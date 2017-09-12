@@ -11,7 +11,7 @@
     
    		<div class="one_fourth">
             
-            <div class="footer_logo"><img src="images/logo4.png" alt="" /></div>
+           
             
             <ul class="contact_address">
                 <li><img src="images/footer-wmap.png" alt="" /></li>
@@ -38,7 +38,6 @@
              	<li><a href="blog.php"><?= Lang::string('blog') ?></a></li>
              	<li><a href="<?= Lang::url('press-releases.php') ?>"><?= Lang::string('news') ?></a></li>
              	<li><a href="<?= Lang::url('fee-schedule.php') ?>"><?= Lang::string('fee-schedule') ?></a></li>
-             	<li><a href="https://github.com/mbassan/wlox/" target="_blank"><?= Lang::string('home-github') ?></a></li>
             </ul>
          </div>
          <? if (User::isLoggedIn()) { ?>
@@ -75,7 +74,7 @@
     <div class="container">
         <div class="one_half">
 
-            <b>Copyright &copy; 2014 WLOX. All rights reserved.</b>
+            <b>Copyright &copy; 2017 by Cuncode. All rights reserved.</b>
 
         </div>
 
@@ -93,8 +92,6 @@
 
 
 <a href="#" class="scrollup">Scroll</a><!-- end scroll to top of the page-->
-
-<? include 'includes/chat.php'; ?>
 </div>
 
 <!-- ######### JS FILES ######### -->

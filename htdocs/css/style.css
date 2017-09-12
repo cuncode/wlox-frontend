@@ -419,13 +419,14 @@ height: 0;
 /* ----------- Logo ----------- */
 
 #trueHeader #logo{
-	float:left;
-	display:block;
-	width:100%;
-	height:34px;
-	margin-top:20px;
-	text-indent:-999em;
-	background:url(../images/logo1.png) no-repeat left bottom !important;
+	float: left;
+    display: block;
+    height: 58px;
+    width: 133px;
+    margin-top: 6px;
+    text-indent: -999em;
+    background: url(../images/btctrade.png) no-repeat left bottom !important;
+    background-size: cover !important;
 }
 
 .clear{clear:both;}
@@ -579,7 +580,7 @@ height: 0;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	line-height: 1;
-	color: #383634;
+	color:#383634;
 	margin: 0;
 	padding: 13px 12px 12px 14px;
 	text-align: center;

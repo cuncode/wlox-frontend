@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     
     <!-- responsive devices styles -->
-	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=20160204" type="text/css" />
+	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=20160205" type="text/css" />
     
 <!-- just remove the below comments witch color skin you want to use -->
     <!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
@@ -118,8 +118,6 @@
                 <li><a href="help.php"><?= Lang::string('help') ?></a></li>
                 <li>|</li>
                 <li><a href="<?= Lang::url('contact.php') ?>"><?= Lang::string('contact') ?></a></li>
-                <li>|</li>
-                <li><a target="_blank" href="https://github.com/mbassan/wlox/"><i class="fa fa-github"></i> GitHub</a></li>
             </ul>
         
             <ul class="tci_list">
@@ -128,16 +126,16 @@
                 <li>|</li>
                 <li><a href="<?= Lang::url('register.php') ?>"><i class="fa fa-user"></i> <?= Lang::string('home-register') ?></a></li>
                 <? } else { ?>
-                <li><a href="account.php"><i class="fa fa-user"></i> <?= User::$info['user'] ?></a> | <a href="logout.php?log_out=1&uniq=<?= $_SESSION["logout_uniq"] ?>"><i class="fa fa-unlock"></i> <?= Lang::string('log-out') ?></a></li>
+                <li><a href="account.php"><i class="fa fa-user"></i> <?= User::$info['email'] ?></a> | <a href="logout.php?log_out=1&uniq=<?= $_SESSION["logout_uniq"] ?>"><i class="fa fa-unlock"></i> <?= Lang::string('log-out') ?></a></li>
                 <? } ?>
                 <li class="empty margin-left">
                 	<label for="language_selector"><img src="images/<?= $CFG->language ?>.png" /></label>
                 	<select id="language_selector" class="lang">
                 		<option value="en" <?= ($CFG->language == 'en') ? 'selected="selected"' : '' ?>>English</option>
-                		<option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option>
+                		<!--option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option-->
                 		<option value="es" <?= ($CFG->language == 'es') ? 'selected="selected"' : '' ?>>Español</option>
-                		<option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option>
-                		<option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option>
+                		<!--option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option-->
+                		<!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
                 	</select>
                 </li>
             </ul>
@@ -187,7 +185,7 @@
                         </ul -->
                     </li>
                     <li><a href="<?= Lang::url('fee-schedule.php') ?>" <?= ($CFG->self == 'fee-schedule.php') ? 'class="active"' : '' ?>><?= Lang::string('fee-schedule') ?></a></li>
-                    <li><a href="<?= Lang::url('about.php') ?>" <?= ($CFG->self == 'about.php') ? 'class="active"' : '' ?>><?= Lang::string('about') ?> <!-- i class="fa fa-angle-down"></i --></a>
+                    <!--li><a href="<?= Lang::url('about.php') ?>" <?= ($CFG->self == 'about.php') ? 'class="active"' : '' ?>><?= Lang::string('about') ?> <!-- i class="fa fa-angle-down"></i --></a-->
                     	<!-- >ul>
                         	<li><a href="our-security.php"><?= Lang::string('our-security') ?></a></li>
                         	<li><a href="fee-schedule.php"><?= Lang::string('fee-schedule') ?></a></li->
@@ -201,9 +199,6 @@
                         <ul>
                         	<li><a href="open-orders.php"><?= Lang::string('open-orders') ?></a></li>
                             <li><a href="transactions.php"><?= Lang::string('transactions') ?></a></li>
-                            <? if (User::$info['shares_enabled']) {?>
-							<li><a href="shares.php"><?= Lang::string('shares') ?></a></li>
-							<? } ?>
                             <li><a href="security.php"><?= Lang::string('security') ?></a></li>
                             <li><a href="settings.php"><?= Lang::string('settings') ?></a></li>
                             <li><a href="bank-accounts.php"><?= Lang::string('bank-accounts') ?></a></li>
