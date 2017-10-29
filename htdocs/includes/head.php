@@ -31,15 +31,15 @@
     
     <!-- ######### CSS STYLES ######### -->
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="css/style2.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="css/style2.css?v=1" type="text/css" />
 	
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css" type="text/css" />
     
     <!-- responsive devices styles -->
-	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=20160205" type="text/css" />
+	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=1" type="text/css" />
 
     <link rel="stylesheet" href="css/parallax/style.css" type="text/css" />
     
