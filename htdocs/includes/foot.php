@@ -7,14 +7,14 @@
 
 	<div class="arrow_02"></div>
 
-    <h2>!Es hora de hacer buenos negocios!</h2>
+    <h2><?= Lang::string('hora-negocios') ?></h2>
 
 	<form name="register" action="register.php">
 		<input type="hidden" name="start" value="1" />
 		<div class="input-group input-group-lg start-div">
-	        <input type="text" name="email" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
+	        <input type="text" name="email" class="form-control" placeholder="<?= Lang::string('escribe-correo') ?>" aria-describedby="basic-addon2">
 	        <span class="input-group-addon" id="addon-start-div">
-	        	COMIENZA A GANAR!
+	        	<?= Lang::string('comienza-ganar') ?>
 	        	<input type="submit" name="submit" /> 
 	        </span>
 	    </div>
