@@ -13,7 +13,7 @@
 	<meta name="keywords" content="" />
 
 	<meta name="description" content="<?= (!empty($meta_desc) ? $meta_desc : false) ?>" />
-	<meta name="publisher" content="WLOX White Label Open-Source Exchange" />
+	<meta name="publisher" content="BTC Trade Center is the best online platform. Safe to buy, sell, transfer and store digital currency, developed by Cuncode" />
 
     
     <!-- Favicon --> 
@@ -24,17 +24,24 @@
     
     <!-- Google fonts - witch you want to use - (rest you can just remove) -->
     <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans:400,800,700italic,700,600italic,600,400italic,300italic,300|Roboto:100,300,400,500,700&amp;subset=latin,latin-ext' type='text/css' />
-    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
     
     <!-- ######### CSS STYLES ######### -->
-	<link rel="stylesheet" href="css/style.css?v=20160204" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/style2.css" type="text/css" />
+	
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css" type="text/css" />
     
     <!-- responsive devices styles -->
 	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=20160205" type="text/css" />
+
+    <link rel="stylesheet" href="css/parallax/style.css" type="text/css" />
     
 <!-- just remove the below comments witch color skin you want to use -->
     <!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
@@ -68,7 +75,31 @@
 	<?= Lang::url($CFG->self,1); ?>
 </head>
 
-<body>
+<body onload="top_window()">
+<div class="trans02" id="menuM">
+    <nav class="navIcons">
+        <a href="<?= Lang::url('index.php') ?>" <?= ($CFG->self == 'index.php' || !$CFG->self) ? 'class="overlayClick animated"' : '' ?>><?= Lang::string('home') ?></a>
+        <a href="<?= Lang::url('order-book.php') ?>" class="overlayClick animated" <?= ($CFG->self == 'order-book.php') ? : '' ?>><?= Lang::string('order-book') ?></a>
+        <? if (!User::isLoggedIn()) { ?>
+            
+            <a href="<?= Lang::url('our-security.php') ?>" class="overlayClick animated" <?= ($CFG->self == 'our-security.php') ?  : '' ?>><?= Lang::string('our-security') ?></a>
+            <a href="<?= Lang::url('buy-and-sell-bitcoin.php') ?>" class="overlayClick animated" <?= ($CFG->self == 'buy-and-sell-bitcoin.php') ?  : '' ?>><?= Lang::string('how-to-register') ?> <!-- i class="fa fa-angle-down"></i --></a>
+            
+            <a href="<?= Lang::url('fee-schedule.php') ?>" class="overlayClick animated" <?= ($CFG->self == 'fee-schedule.php') ? : '' ?>><?= Lang::string('fee-schedule') ?></a>
+            <a href="<?= Lang::url('contact.php') ?>" class="overlayClick animated"><?= Lang::string('contact') ?></a>
+            <a href="login.php" class="overlayClick animated" ><?= Lang::string('home-login') ?></a>
+            <a href="register.php" class="overlayClick animated" ><?= Lang::string('home-register') ?></a>
+
+            <? } else { ?>
+
+            <a href="account.php" class="overlayClick animated" <?= ($CFG->self == 'account.php' || $CFG->self == 'open-orders.php' || $CFG->self == 'transactions.php' || $CFG->self == 'security.php' || $CFG->self == 'settings.php' || $CFG->self == 'bank-accounts.php' || $CFG->self == 'bitcoin-addresses.php' || $CFG->self == 'history.php' || $CFG->self == 'api-access.php') ?  : '' ?>><?= Lang::string('account') ?></a>
+            <a href="buy-sell.php" class="overlayClick animated" <?= ($CFG->self == 'buy-sell.php') ?  : '' ?>><?= Lang::string('buy-sell') ?></a>
+            <a href="deposit.php" class="overlayClick animated" <?= ($CFG->self == 'deposit.php') ?  : '' ?>><?= Lang::string('deposit') ?></a>
+            <a href="withdraw.php" class="overlayClick animated" <?= ($CFG->self == 'withdraw.php') ?  : '' ?>><?= Lang::string('withdraw') ?></a>
+
+            <? } ?>
+        </nav>
+</div>
 <input type="hidden" id="javascript_date_format" value="<?= Lang::string('javascript-date-format') ?>" />
 <input type="hidden" id="javascript_mon_0" value="<?= Lang::string('jan') ?>" />
 <input type="hidden" id="javascript_mon_1" value="<?= Lang::string('feb') ?>" />
@@ -100,49 +131,38 @@
 <?= Lang::url(false,false,1); ?>
 <?= Lang::jsCurrencies(false,false,1); ?>
 
+<script type="text/javascript">
+    /*focus sol*/
+    function top_window(){
+        window.scrollTo(0,0);
+    }
+</script>
+
 <div class="site_wrapper">
    
 <!-- HEADER -->
 <header id="header">
 
 	<!-- Top header bar -->
-	<div id="topHeader">
+	<div id="topHeader" style="display:none;">
     
-	<div class="wrapper">
+	 <div class="wrapper">
          
         <div class="top_contact_info">
         
         <div class="container">
-        
+        <!--
             <ul class="tci_list_left">
                 <li><a href="help.php"><?= Lang::string('help') ?></a></li>
                 <li>|</li>
-                <li><a href="<?= Lang::url('contact.php') ?>"><?= Lang::string('contact') ?></a></li>
-            </ul>
+                
+            </ul>end top contact info -->
         
-            <ul class="tci_list">
-                <? if (!User::isLoggedIn()) { ?>
-                <li><a href="login.php"><i class="fa fa-key"></i> <?= Lang::string('home-login') ?></a></li>
-                <li>|</li>
-                <li><a href="<?= Lang::url('register.php') ?>"><i class="fa fa-user"></i> <?= Lang::string('home-register') ?></a></li>
-                <? } else { ?>
-                <li><a href="account.php"><i class="fa fa-user"></i> <?= User::$info['email'] ?></a> | <a href="logout.php?log_out=1&uniq=<?= $_SESSION["logout_uniq"] ?>"><i class="fa fa-unlock"></i> <?= Lang::string('log-out') ?></a></li>
-                <? } ?>
-                <li class="empty margin-left">
-                	<label for="language_selector"><img src="images/<?= $CFG->language ?>.png" /></label>
-                	<select id="language_selector" class="lang">
-                		<option value="en" <?= ($CFG->language == 'en') ? 'selected="selected"' : '' ?>>English</option>
-                		<!--option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option-->
-                		<option value="es" <?= ($CFG->language == 'es') ? 'selected="selected"' : '' ?>>Español</option>
-                		<!--option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option-->
-                		<!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
-                	</select>
-                </li>
-            </ul>
+            
             
         </div>
         
-    </div><!-- end top contact info -->
+    </div> 
             
  	</div>
     
@@ -153,10 +173,10 @@
     
 	<div class="wrapper">
     
-     <div class="container">
+     <div class="container-header">
     
 		<!-- Logo -->
-		<div class="one_fourth"><a href="index.php" id="logo"></a></div>
+		<div class="logo_container"><a href="index.php" id="logo"></a></div>
 		
         <!-- Menu -->
         <div class="three_fourth last">
@@ -192,6 +212,7 @@
                         	<li><a href="press-releases.php"><?= Lang::string('news') ?></a></li>
                         </ul -->
                     </li>
+                    <li><a href="<?= Lang::url('contact.php') ?>"><?= Lang::string('contact') ?></a></li>
                     <li style="display:none;"><a href="login.php"><?= Lang::string('home-login') ?></a></li>
 	                <li style="display:none;"><a href="register.php"><?= Lang::string('home-register') ?></a></li>
                     <? } else { ?>
@@ -211,15 +232,43 @@
                     <li><a href="buy-sell.php" <?= ($CFG->self == 'buy-sell.php') ? 'class="active"' : '' ?>><?= Lang::string('buy-sell') ?></a></li>
                     <li><a href="deposit.php" <?= ($CFG->self == 'deposit.php') ? 'class="active"' : '' ?>><?= Lang::string('deposit') ?></a></li>
                     <li><a href="withdraw.php" <?= ($CFG->self == 'withdraw.php') ? 'class="active"' : '' ?>><?= Lang::string('withdraw') ?></a></li>
-                    <li style="display:none;"><a href="help.php"><?= Lang::string('help') ?></a></li>
+                    <!-- <li style="display:none;"><a href="help.php"><?= Lang::string('help') ?></a></li> -->
 	                <li style="display:none;"><a href="contact.php"><?= Lang::string('contact') ?></a></li>
 	                <li style="display:none;"><a href="logout.php?log_out=1"><?= Lang::string('log-out') ?></a></li>
 	                <? } ?>
                 </ul>
+                <ul class="tci_list">
+                    <li class="empty margin-left">
+                        <label for="language_selector" style="display: none;"><img src="images/<?= $CFG->language ?>.png" /></label>
+                        <select id="language_selector" class="lang">
+                            <option value="en" <?= ($CFG->language == 'en') ? 'selected="selected"' : '' ?>>ENG.</option>
+                            <!--option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option-->
+                            <option value="es" <?= ($CFG->language == 'es') ? 'selected="selected"' : '' ?>>ESP.</option>
+                            <!--option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option-->
+                            <!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
+                        </select>
+                    </li>
+                        <img src="../htdocs/images/idioma.png" alt="">
+                    <? if (!User::isLoggedIn()) { ?>
+                    <a href="login.php" style="margin-right: 10px;"><img src="../htdocs/images/login.png" width="30" height="30" alt=""><!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
+                    <a href="<?= Lang::url('register.php') ?>"><img src="../htdocs/images/registro.png" width="30" height="30" alt=""><!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
+                    <? } else { ?>
+                    <li>
+                        <!-- <a href="account.php"><i class="fa fa-user" style="margin-top: 5px;"></i> <?= User::$info['email'] ?></a>  -->
+                        <a href="logout.php?log_out=1&uniq=<?= $_SESSION["logout_uniq"] ?>"><i class="fa fa-unlock"></i> <?= Lang::string('log-out') ?></a>
+                    </li>
+                    <? } ?>
+                    <!-- <i class="glyphicon glyphicon-menu-down" style="position: absolute;right: 10px; display: block; color: #006eaf; font-size: 1em;"></i> -->
+                </ul>
             </div>
             
         </nav><!-- end nav menu -->
-      
+      <div class="navButtom" id="navButtom">
+            <button id="showPush" type="button" class="tcon tcon-menu--xcross trans02" aria-label="toggle menu">
+                <span class="tcon-menu__lines" aria-hidden="true"></span>
+                <span class="tcon-visuallyhidden"></span>
+            </button>       
+        </div>
         </div>
         
         
@@ -228,5 +277,6 @@
 	</div>
     
 	</div>
+
     
 </header><!-- end header -->

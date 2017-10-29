@@ -87,7 +87,7 @@ include 'includes/head.php';
 			</form>
 			<div class="clear"></div>
 		</div>
-		<div class="one_half">
+		<div class="col-md-6">
 			<h3><?= Lang::string('orders-bid') ?></h3>
         	<div class="table-style">
         		<table class="table-list trades" id="bids_list">
@@ -118,7 +118,7 @@ include 'includes/head.php';
         		</table>
 			</div>
 		</div>
-		<div class="one_half last">
+		<div class="col-md-6">
 			<h3><?= Lang::string('orders-ask') ?></h3>
 			<div class="table-style">
 				<table class="table-list trades" id="asks_list">

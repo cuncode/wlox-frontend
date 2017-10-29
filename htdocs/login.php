@@ -54,7 +54,7 @@ if (!empty($_REQUEST['message']) && $_REQUEST['message'] == 'registered')
 $_SESSION["register_uniq"] = md5(uniqid(mt_rand(),true));
 include 'includes/head.php';
 ?>
-<div class="page_title">
+<div class="page_title" style="display:none;">
 	<div class="container">
 		<div class="title"><h1><?= Lang::string('home-login') ?></h1></div>
         <div class="pagenation">&nbsp;<a href="index.php"><?= Lang::string('home') ?></a> <i>/</i> <a href="login.php"><?= Lang::string('home-login') ?></a></div>
@@ -85,15 +85,15 @@ include 'includes/head.php';
     	?>
     	<form method="POST" action="login.php" name="login">
 	    	<div class="loginform">
-	    		<a href="forgot.php"><?= Lang::string('forgot-ask') ?></a>
+	    		<img src="images/BTC.svg" alt="">
 	    		<div class="loginform_inputs">
 		    		<div class="input_contain">
-		    			<i class="fa fa-user"></i>
+		    			<i class="fa fa-user" style="background-color:#fe510d; width: 10%; text-align:center;padding: 10px;"></i>
 		    			<input type="text" class="login" name="login[user]" value="<?= $user1 ?>">
 		    		</div>
 		    		<div class="separate"></div>
 		    		<div class="input_contain last">
-		    			<i class="fa fa-lock"></i>
+		    			<i class="fa fa-lock" style="background-color:#fe510d; width: 10%; text-align:center;padding: 10px;"></i>
 		    			<input type="password" class="login" name="login[pass]" value="<?= $pass1 ?>">
 		    		</div>
 	    		</div>
@@ -105,6 +105,7 @@ include 'includes/head.php';
 	    		<input type="hidden" name="submitted" value="1" />
 	    		<input type="hidden" name="uniq" value="<?= $_SESSION["register_uniq"] ?>" />
 	    		<input type="submit" name="submit" value="<?= Lang::string('home-login') ?>" class="but_user" />
+	    		<a href="forgot.php" style="margin-top: 20px; color: #fff;"><?= Lang::string('forgot-ask') ?></a>
 	    	</div>
     	</form>
     	<a class="forgot" href="register.php?"><?= Lang::string('login-dont-have') ?></a>

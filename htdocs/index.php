@@ -72,7 +72,8 @@ include 'includes/head.php';
 if (!User::isLoggedIn()) {
 ?>
 
-<div class="container_full">
+
+<div class="container_full" id="parallax" >
 	<?php 
 	if ($CFG->language == 'en' || $CFG->language == 'es' || $CFG->language == 'pt' || empty($CFG->language))
 		$wordwrap = 80;
@@ -83,11 +84,25 @@ if (!User::isLoggedIn()) {
 	?>
 	<div class="mobilebanner">
 		<div class="container">
-			<h1 <?= ($CFG->language == 'ru') ? 'class="caption_ru"' : false ?>><?= $content['title'] ?></h1>
-			<p class="text"><?= wordwrap(strip_tags($content['content']),$wordwrap,'<br/>') ?> <a class="morestuff" href="<?= Lang::url('about.php') ?>">>></a></p>
+			<h1 style="text-align: center;" <?= ($CFG->language == 'ru') ? 'class="caption_ru"' : false ?>><?= $content['title'] ?></h1>
+			<form name="register" action="register.php">
+				<input type="hidden" name="start" value="1" />
+				<div class="input-group input-group-lg start-div">
+			        <input type="text" name="email" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
+			        <span class="input-group-addon" id="addon-start-div">
+			        	COMIENZA A GANAR!
+			        	<input type="submit" name="submit" /> 
+			        </span>
+			    </div>
+		    </form>
+			
+			<p class="text" style="text-align: center;"><?= wordwrap(strip_tags($content['content']),$wordwrap,'<br/>') ?> <a class="morestuff" href="<?= Lang::url('about.php') ?>">>></a></p>
+			<!--
 			<a href="login.php" class="button_slider"><i class="fa fa-key"></i>&nbsp;&nbsp;<?= Lang::string('home-login') ?></a>       
 			<a href="<?= Lang::url('register.php') ?>" class="button_slider"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= Lang::string('home-register') ?></a>
+			  -->
 			<div class="clear"></div>
+
 		</div>
 		<div class="ticker">
 			<div class="contain">
@@ -109,6 +124,7 @@ if (!User::isLoggedIn()) {
 		</div>
 	</div>
 </div>
+
 
 <div class="clearfix"></div>
 <? } ?>
@@ -154,42 +170,42 @@ if (!User::isLoggedIn()) {
         <div class="clear"></div>
         <div class="panel panel-default">
         	<div class="panel-heading non-mobile">
-        		<div class="one_fifth"><?= Lang::string('home-stats-last-price') ?></div>
-		        <div class="one_fifth"><?= Lang::string('home-stats-daily-change') ?></div>
-		        <div class="one_fifth"><?= Lang::string('home-stats-days-range') ?></div>
-		        <div class="one_fifth"><?= Lang::string('home-stats-todays-open') ?></div>
-		        <div class="one_fifth last"><?= Lang::string('home-stats-24h-volume') ?></div>
+        		<div class="col-md-2"><?= Lang::string('home-stats-last-price') ?></div>
+		        <div class="col-md-2"><?= Lang::string('home-stats-daily-change') ?></div>
+		        <div class="col-md-3"><?= Lang::string('home-stats-days-range') ?></div>
+		        <div class="col-md-2"><?= Lang::string('home-stats-todays-open') ?></div>
+		        <div class="col-md-2"><?= Lang::string('home-stats-24h-volume') ?></div>
 		        <div class="clear"></div>
         	</div>
         	<div class="panel-body">
-				<div class="one_fifth">
+				<div class="col-md-2">
 		        	<div class="m_head"><?= Lang::string('home-stats-last-price') ?></div>
 		        	<p class="stat1 <?= ($query['Transactions']['get']['results'][0][0]['maker_type'] == 'sell') ? 'price-green' : 'price-red' ?>"><?= $arrow1.'<span class="buy_currency_char">'.$currency_info['fa_symbol'].'</span><span id="stats_last_price">'.String::currency($stats['last_price'],2,4).'</span>'?><small id="stats_last_price_curr"><?= ($query['Transactions']['get']['results'][0][0]['currency'] != $currency_info['id'] && $query['Transactions']['get']['results'][0][0]['currency1'] != $currency_info['id'] && $query['Transactions']['get']['results'][0][0]['currency']) ? ' ('.$CFG->currencies[$query['Transactions']['get']['results'][0][0]['currency1']]['currency'].')' : '' ?></small></p>
 		        </div>
-		        <div class="one_fifth">
+		        <div class="col-md-2">
 		        	<div class="m_head"><?= Lang::string('home-stats-daily-change') ?></div>
 		        	<p class="stat1"><?= $arrow.'<span id="stats_daily_change_abs">'.String::currency(abs($stats['daily_change']),2,4).'</span>' ?> <small><?= '<span id="stats_daily_change_perc">'.String::currency(abs($stats['daily_change_percent'])).'</span>%'?></small></p>
 		        </div>
-		        <div class="one_fifth">
+		        <div class="col-md-3">
 		        	<div class="m_head"><?= Lang::string('home-stats-days-range') ?></div>
 		        	<p class="stat1"><?= '<span class="buy_currency_char">'.$currency_info['fa_symbol'].'</span><span id="stats_min">'.String::currency($stats['min'],2,4).'</span> - <span id="stats_max">'.String::currency($stats['max'],2,4).'</span>' ?></p>
 		        </div>
-		        <div class="one_fifth">
+		        <div class="col-md-2">
 		        	<div class="m_head"><?= Lang::string('home-stats-todays-open') ?></div>
 		        	<p class="stat1"><?= '<span class="buy_currency_char">'.$currency_info['fa_symbol'].'</span><span id="stats_open">'.String::currency($stats['open'],2,4).'</span>'?></p>
 		        </div>
-		        <div class="one_fifth last">
+		        <div class="col-md-2">
 		        	<div class="m_head"><?= Lang::string('home-stats-24h-volume') ?></div>
 		        	<p class="stat1"><?= '<span id="stats_traded">'.String::currency($stats['total_btc_traded']).'</span>' ?> <?= $c_currency_info['currency']?></p>
 		        </div>
 		        <div class="panel-divider"></div>
-		        <div class="one_third">
+		        <div class="col-md-4">
 		        	<h5><?= Lang::string('home-stats-market-cap') ?>: <em class="stat2"><?= '<span class="buy_currency_char">'.$currency_info['fa_symbol'].'</span><span id="stats_market_cap">'.String::currency($stats['market_cap'],0).'</span>'?></em></h5>
 		        </div>
-		        <div class="one_third">
+		        <div class="col-md-4">
 		        	<h5><?= str_replace('[c_currency]',$c_currency_info['currency'],Lang::string('home-stats-total-btc')) ?>: <em class="stat2"><?= '<span id="stats_total_btc">'.String::currency($stats['total_btc'],0).'</span>' ?></em></h5>
 		        </div>
-		        <div class="one_third last">
+		        <div class="col-md-4">
 		        	<h5><?= Lang::string('home-stats-global-volume') ?>: <em class="stat2"><?= '<span class="buy_currency_char">'.$currency_info['fa_symbol'].'</span><span id="stats_trade_volume">'.String::currency($stats['trade_volume'],0).'</span>' ?></em></h5>
 		        </div>
 		        <div class="clear"></div>
@@ -211,7 +227,7 @@ if (!User::isLoggedIn()) {
 			}
 	        ?>
         	</div>
-        	<div class="repeat-line o1"></div>
+        	<!-- <div class="repeat-line o1"></div>
         	<div class="repeat-line o2"></div>
         	<div class="repeat-line o3"></div>
         	<div class="repeat-line o4"></div>
@@ -220,7 +236,7 @@ if (!User::isLoggedIn()) {
         	<div class="repeat-line o7"></div>
         	<div class="repeat-line o8"></div>
         	<div class="repeat-line o9"></div>
-        	<div class="repeat-line o10"></div>
+        	<div class="repeat-line o10"></div> -->
         </div>
         <div class="graph_options">
         	<div id="graph_time">
@@ -297,7 +313,7 @@ if (!User::isLoggedIn()) {
 	        <div class="clear"></div>
         </div>
         <div class="mar_top4"></div>
-        <div class="one_half">
+        <div class="col-md-6">
         	<input type="hidden" id="transactions_timestamp" value="<?= time() * 1000 ?>" />
         	<h3><?= Lang::string('home-live-trades') ?></h3>
         	<div class="table-style">
@@ -323,9 +339,9 @@ if (!User::isLoggedIn()) {
         		</table>
         	</div>
         </div>
-        <div class="one_half last">
+        <div class="col-md-6">
         	<h3><?= Lang::string('home-live-orders') ?> <a href="order-book.php" class="highlight gray"><i class="fa fa-plus-square"></i> <?= Lang::string('order-book-see') ?></a></h3>
-        	<div class="one_half">
+        	<div class="col-md-6">
         		<div class="table-style">
         			<table class="table-list trades" id="bids_list">
         			<tr>
@@ -347,7 +363,7 @@ if (!User::isLoggedIn()) {
         		</table>
         		</div>
         	</div>
-        	<div class="one_half last">
+        	<div class="col-md-6">
         		<div class="table-style">
         			<table class="table-list trades" id="asks_list">
         			<tr>
@@ -377,7 +393,7 @@ if (!User::isLoggedIn()) {
 </div><!-- end fresh projects -->
 
 
-<div class="clearfix mar_top5"></div>
+<!-- <div class="clearfix mar_top5"></div>
 
 <div class="features_sec03">
 	<div class="container">
@@ -411,7 +427,7 @@ if (!User::isLoggedIn()) {
         <a href="<?= Lang::url('press-releases.php') ?>" class="highlight gray bigger"><i class="fa fa-plus-square"></i> <?= Lang::string('news-see-all') ?></a>
     </div>
 	<div class="clearfix mar_top8"></div>
-</div><!-- end features section 3 -->
+</div>end features section 3 -->
 
 
 

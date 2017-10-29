@@ -17,7 +17,7 @@ include 'includes/head.php';
 </div>
 <div class="container">
 	<div class="content_right">
-    <div class="text"><?= $content['content'] ?></div>
+    <div class="text comoFunciona"><?= $content['content'] ?></div>
     </div>
     <? include 'includes/sidebar_topics.php'; ?>
 	<div class="clearfix mar_top8"></div>

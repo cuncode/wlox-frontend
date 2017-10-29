@@ -18,6 +18,10 @@ unset($register->info['uniq']);
 $register->verify();
 $register->reCaptchaCheck();
 
+if (!empty($_REQUEST['start']))
+	$register->info['email'] = preg_replace("/[^0-9a-zA-Z@\.\!#\$%\&\*+_\~\?\-]/", "",$_REQUEST['email']);
+
+
 if (!empty($_REQUEST['register']) && $_REQUEST['register']['default_currency'] == $_REQUEST['register']['default_c_currency']) {
 	$register->errors[] = Lang::string('same-currency-error');
 }
@@ -67,24 +71,16 @@ $page_title = Lang::string('home-register');
 $_SESSION["register_uniq"] = md5(uniqid(mt_rand(),true));
 include 'includes/head.php';
 ?>
-<div class="page_title">
-	<div class="container">
-		<div class="title"><h1><?= $page_title ?></h1></div>
-        <div class="pagenation">&nbsp;<a href="index.php"><?= Lang::string('home') ?></a> <i>/</i> <a href="register.php"><?= Lang::string('register') ?></a></div>
-	</div>
-</div>
-<div class="container">
-	<div class="content_right">
-		<div class="testimonials-4">
+<div class="" style="width: 100%; float: left; background-color: #006eaf;">
+	<div class="contenedor-registro" style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
+        <h2 style="padding: 4%;color: #ffffff;font-size: 2.5em;">Registrar</h2>
+		<div class="" style="background-color: rgba(255, 255, 255, 0.60); padding: 5%;">
 			<? 
             Errors::display(); 
             Messages::display();
             ?>
-            <div class="content">
-            	<h3 class="section_label">
-                    <span class="left"><i class="fa fa-user fa-2x"></i></span>
-                    <span class="right"><?= Lang::string('settings-registration-info') ?></span>
-                </h3>
+            <div class="content content-registrer" style="border: none;">
+            	<img src="images/BTC.svg" alt="BTC" style="margin: 0;width: 50%;padding: 0;">
                 <div class="clear"></div>
                 <?
                 $currencies_list = array();
@@ -115,7 +111,7 @@ include 'includes/head.php';
                 $register->selectInput('default_currency',Lang::string('default-currency'),1,false,$currencies_list,false,array('currency'));
                 $register->checkBox('terms',Lang::string('settings-terms-accept'),false,false,false,false,false,false,'checkbox_label');
                 $register->captcha(Lang::string('settings-capcha'));
-                $register->HTML('<div class="form_button"><input type="submit" name="submit" value="'.Lang::string('home-register').'" class="but_user" /></div>');
+                $register->HTML('<div class="form_button"><input type="submit" name="submit" value="'.Lang::string('home-register').'" class="but_user" style="background: #fe510d;"/></div>');
                 $register->hiddenInput('uniq',1,$_SESSION["register_uniq"]);
                 $register->display();
                 ?>
@@ -124,6 +120,5 @@ include 'includes/head.php';
             <div class="mar_top8"></div>
         </div>
 	</div>
-	<? include 'includes/sidebar_account.php'; ?>
 </div>
 <? include 'includes/foot.php'; ?>

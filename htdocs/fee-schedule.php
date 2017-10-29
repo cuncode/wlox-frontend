@@ -23,7 +23,7 @@ include 'includes/head.php';
 </div>
 <div class="container">
 	<div class="content_right">
-    	<div class="text"><?= $content['content'] ?></div>
+    	<div class="text comoFunciona"><?= $content['content'] ?></div>
     	<div class="clearfix mar_top2"></div>
     	<div class="table-style">
     		<table class="table-list trades">

@@ -8,15 +8,11 @@
 	<div class="arrow_02"></div>
 
     <h2>!Es hora de hacer buenos negocios!</h2>
-
+	
 	<form name="register" action="register.php">
-		<input type="hidden" name="start" value="1" />
 		<div class="input-group input-group-lg start-div">
-	        <input type="text" name="email" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
-	        <span class="input-group-addon" id="addon-start-div">
-	        	COMIENZA A GANAR!
-	        	<input type="submit" name="submit" /> 
-	        </span>
+	        <input type="text" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
+	        <button type="submit" class="input-group-addon" id="addon-start-div">COMIENZA A GANAR!</button> 
 	    </div>
     </form>
     
@@ -63,15 +59,17 @@
     <div class="container">
         <div class="">
 
-            <b>BTCTRACECENTER Copyright &copy; 2017 <br>by <a href="http://www.cuncode.com/#home">cuncode</a></b>
+            <b>BTCTRACECENTER Copyright &copy; 2017 <br>by <a href="http://www.cuncode.com/#home">www.cuncode.com</a></b>
 
         </div>
 
-    	<div class="">
-     		<ul class="footer_social_links" style="margin-top: 5px;">
-                <li style="background-color: rgb(254,81,13);"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li style="background-color: rgb(254,81,13);"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-            </ul>    
+    	<div class="one_half last">
+     		<!--
+            <ul class="footer_social_links">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+            -->    
     	</div>
     
     </div>
@@ -127,57 +125,6 @@ $('#parallax').particleground({
 
 
 </script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-        <script>
-            var showPush = jQuery.noConflict();
-            showPush('#showPush').on('click',function(){
-                if (showPush('#showPush').hasClass('tcon-transform')) {
-                    showPush('section').removeClass('scala8').addClass('scala1');
-                    setTimeout(function() {
-                            showPush('section').removeClass('scala8').removeClass('scala1');
-                    }, 1000)                        
-                    showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
-                    showPush('.redes').removeClass('block').fadeOut("fast");
-                    showPush('#showPush').removeClass('tcon-transform');
-                    setTimeout(function() {
-                            showPush('.logo').fadeIn('fast');
-                            showPush('#menuM').removeClass('navOpen');
-                            showPush('.navIcons').removeClass('block');
-                            showPush('.navIcons a').removeClass('fadeOut');
-                    }, 1300);
-                    showPush('.navIcons').removeClass('fadeIn');
-                }
-                else {
-                    showPush('.logo').fadeOut('fast');  
-                    showPush('#menuM').addClass('navOpen');
-                    setTimeout(function() {
-                        showPush('section').removeClass('scala1').addClass('scala8');
-                    }, 200);                    
-                    showPush('#showPush').addClass('tcon-transform');
-                    setTimeout(function() {
-                            showPush('.navIcons').addClass('block');
-                            showPush('.navIcons a').addClass('fadeIn');
-                            showPush('.redes').addClass('block').fadeIn("fast");
-                    }, 500);
-                }
-            });
-            showPush('.overlayClick').on('click',function(){
-                showPush('section').removeClass('scala8').addClass('scala1');
-                setTimeout(function() {
-                    showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 700);                
-                showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
-                showPush('.redes').removeClass('block').fadeOut("fast");
-                showPush('#showPush').removeClass('tcon-transform');
-                setTimeout(function() {
-                        showPush('.logo').fadeIn('fast');
-                        showPush('#menuM').removeClass('navOpen');
-                        showPush('.navIcons').removeClass('block');
-                        showPush('.navIcons a').removeClass('fadeOut');
-                        showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 1700);
-                showPush('.navIcons').removeClass('fadeIn');
-            });         
-        </script>
+
 </body>
 </html>

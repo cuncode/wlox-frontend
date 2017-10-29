@@ -768,13 +768,13 @@ function graphOrders(json_data,refresh) {
     	 data: json_data.bids,
          lines: { show: true, fill: true },
          points: { show: false, fill: false },
-         color: '#17D6D6'
+         color: '#ff7701'
     	},
     	{
      	 data: json_data.asks,
          lines: { show: true, fill: true },
          points: { show: false, fill: false },
-         color: '#53DB80'
+         color: '#5998d2'
     	}
  	];
 	
@@ -894,7 +894,7 @@ function graphDistribution() {
       	    {
           	 data: json_data,
                bars: { show: true, fill: true, align: 'center', barWidth: bar_width },
-               color: '#00bdbd'
+               color: '#ff7701'
           	}
        	];
 		

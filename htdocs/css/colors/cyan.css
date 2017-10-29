@@ -11,15 +11,15 @@
 	background-color: #00bdbd;
 }
 #access .menu ul li ul {
-	background: #00bdbd;
+	background: #5998d2;
 }
 #access .menu ul li ul li a {
-	background: #00bdbd;
+	background: #5998d2;
 }
 #access .menu ul li ul li a:hover,
 #access .menu ul li ul li.active a,
 #access .menu ul li ul li a.selected {
-	background: #32dfdf;
+	background: #348dd9;
 }
 
 .four_col_fusection .one_fourth.helight i {
@@ -136,7 +136,7 @@ a.but_goback {
 }
 
 .sidebar_widget ul.arrows_list1 li a {
-	color: #00bdbd;
+	color: #969696;
 }
 
 #site-searchform #searchsubmit{
