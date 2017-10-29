@@ -127,7 +127,7 @@ $('#parallax').particleground({
 
 
 </script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
         <script>
             var showPush = jQuery.noConflict();
             showPush('#showPush').on('click',function(){
