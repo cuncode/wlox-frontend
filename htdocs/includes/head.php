@@ -13,9 +13,8 @@
 	<meta name="keywords" content="" />
 
 	<meta name="description" content="<?= (!empty($meta_desc) ? $meta_desc : false) ?>" />
-	<meta name="publisher" content="BTC Trade Center is the best online platform. Safe to buy, sell, transfer and store digital currency, developed by Cuncode" />
+	<meta name="publisher" content="BTC Trade Center is the best online platform. Safe to buy, sell, transfer and store digital currency" />
 
-    
     <!-- Favicon --> 
 	<link rel="shortcut icon" href="images/favicon.ico">
     
