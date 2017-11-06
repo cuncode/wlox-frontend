@@ -247,10 +247,10 @@
                             <!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
                         </select>
                     </li>
-                        <img src="../htdocs/images/idioma.png" alt="">
+                        <img src="images/idioma.png" alt="">
                     <? if (!User::isLoggedIn()) { ?>
-                    <a href="login.php" style="margin-right: 10px;"><img src="../htdocs/images/login.png" width="30" height="30" alt=""><!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
-                    <a href="<?= Lang::url('register.php') ?>"><img src="../htdocs/images/registro.png" width="30" height="30" alt=""><!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
+                    <a href="login.php" style="margin-right: 10px;"><img src="images/login.png" width="30" height="30" alt=""><!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
+                    <a href="<?= Lang::url('register.php') ?>"><img src="images/registro.png" width="30" height="30" alt=""><!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
                     <? } else { ?>
                     <li>
                         <!-- <a href="account.php"><i class="fa fa-user" style="margin-top: 5px;"></i> <?= User::$info['email'] ?></a>  -->
