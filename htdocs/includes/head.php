@@ -30,7 +30,7 @@
     
     <!-- ######### CSS STYLES ######### -->
     <link rel="stylesheet" href="css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="css/style.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="css/style.css?v=2" type="text/css" />
     <link rel="stylesheet" href="css/style2.css?v=1" type="text/css" />
 	
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
