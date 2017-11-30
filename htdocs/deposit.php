@@ -27,9 +27,27 @@ $requests = $query['Requests']['get']['results'][1];
 $bank_instructions = ($bank_account) ? $query['Content']['getRecord']['results'][0] : $query['Content']['getRecord']['results'][1];
 $bank_account_currency = $CFG->currencies[$bank_account['currency']];
 $pagination = $pagination = Content::pagination('deposit.php',$page1,$total,15,5,false);
+$method = !empty($_REQUEST['method']) ? preg_replace("/[^a-zA-Z0-9\-\.\_]/", "",$_REQUEST['method']) : false;
+$deposit_amount1 = 0;
 
 $page_title = Lang::string('deposit');
 
+if ($method) {
+	API::add('Gateways','get',array($method));
+	$query = API::send();
+	$gateway = $query['Gateways']['get']['results'][0];
+	$method = (!$gateway) ? false : $method;
+	$deposit_amount1 = (!empty($_REQUEST['deposit_amount'])) ? String::currencyInput($_REQUEST['deposit_amount']) : 0;
+	$submitted = !empty($_REQUEST['submitted']);
+	
+	if ($gateway) {
+		$g = new Gateways($method);
+		$url = $g->getUrl();
+		
+		if ($url)
+			Link::redirect($url);
+	}
+}
 
 if (empty($_REQUEST['bypass'])) {
 	include 'includes/head.php';
@@ -42,8 +60,8 @@ if (empty($_REQUEST['bypass'])) {
 </div>
 <div class="container">
 	<div class="content_right">
-		<div class="testimonials-4">
-			<div class="one_half">
+		<div class="row testimonials-4">
+			<div class="col-md-6">
 				<div class="content">
 					<h3 class="section_label">
 						<span class="left"><i class="fa fa-btc fa-2x"></i></span>
@@ -85,7 +103,7 @@ if (empty($_REQUEST['bypass'])) {
 					</div>
 				</div>
 			</div>
-			<div class="one_half last">
+			<div class="col-md-6">
 				<div class="content">
 					<h3 class="section_label">
 						<span class="left"><i class="fa fa-money fa-2x"></i></span>
@@ -93,38 +111,58 @@ if (empty($_REQUEST['bypass'])) {
 					</h3>
 					<div class="clear"></div>
 					<div class="buyform">
-						<div class="spacer"></div>
-						<? if ($bank_accounts) { ?>
-						<div class="param">
-						<label for="deposit_bank_account"><?= Lang::string('deposit-fiat-account') ?></label>
-							<select id="deposit_bank_account" name="deposit_bank_account">
-							<?
-							$i = 1;
-							if ($bank_accounts) {
-								foreach ($bank_accounts as $account) {
-									echo '<option '.(($i == 1) ? 'selected="selected"' : '').' value="'.$account['id'].'">'.$account['account_number'].' - ('.$account['currency'].')</option>';
-									++$i;
-								}
-							}	
-							?>
-							</select>
-							<div class="clear"></div>
+						<div class="payment-show-payments <?= $method ? 'hide' : '' ?>">
+							<!--div class="row">
+								<div class="payment-box col-md-6">
+									<a href="<?= $CFG->self ?>?method=skrill"><img src="images/skrill-logo.png" /></a>
+								</div>
+								<div class="payment-box col-md-6">
+									<a href="<?= $CFG->self ?>?method=neteller"><img src="images/neteller-logo.png" /></a>
+								</div>
+							</div-->
+							<div class="row">
+								<div class="payment-box payment-box-cc col-md-6">
+									<a href="#"><img src="images/cc.png" /></a>
+								</div>
+								<!--div class="payment-box col-md-6">
+									<a href="<?= $CFG->self ?>?method=webmoney"><img src="images/webmoney.gif" /></a>
+								</div-->
+							</div>
 						</div>
-						<div class="spacer"></div>
-						<div class="calc">
-							<div class="text"><?= str_replace('[escrow_name]','<span id="escrow_name">'.$bank_account_currency['account_name'].'</span>',str_replace('[escrow_account]','<span id="escrow_account">'.$bank_account_currency['account_number'].'</span>',str_replace('[client_account]','<span id="client_account">'.$bank_account['account_number'].'</span>',$bank_instructions['content']))) ?></div>
-							<div class="mar_top2"></div>
-							<a class="item_label" href="bank-accounts.php"><i class="fa fa-cog"></i> <?= Lang::string('deposit-manage-bank-accounts') ?></a>
-							<div class="clear"></div>
+						<div class="hide payment-show-cc">
+							<div class="spacer"></div>
+							<? if ($bank_accounts) { ?>
+							<div class="param">
+							<label for="deposit_bank_account"><?= Lang::string('deposit-fiat-account') ?></label>
+								<select id="deposit_bank_account" name="deposit_bank_account">
+								<?
+								$i = 1;
+								if ($bank_accounts) {
+									foreach ($bank_accounts as $account) {
+										echo '<option '.(($i == 1) ? 'selected="selected"' : '').' value="'.$account['id'].'">'.$account['account_number'].' - ('.$account['currency'].')</option>';
+										++$i;
+									}
+								}	
+								?>
+								</select>
+								<div class="clear"></div>
+							</div>
+							<div class="spacer"></div>
+							<div class="calc">
+								<div class="text"><?= str_replace('[escrow_name]','<span id="escrow_name">'.$bank_account_currency['account_name'].'</span>',str_replace('[escrow_account]','<span id="escrow_account">'.$bank_account_currency['account_number'].'</span>',str_replace('[client_account]','<span id="client_account">'.$bank_account['account_number'].'</span>',$bank_instructions['content']))) ?></div>
+								<div class="mar_top2"></div>
+								<a class="item_label" href="bank-accounts.php"><i class="fa fa-cog"></i> <?= Lang::string('deposit-manage-bank-accounts') ?></a>
+								<div class="clear"></div>
+							</div>
+							<? } else { ?>
+							<div class="calc">
+								<div class="text"><?= $bank_instructions['content'] ?></div>
+								<div class="mar_top2"></div>
+								<a class="item_label" href="bank-accounts.php"><i class="fa fa-cog"></i> <?= Lang::string('deposit-manage-bank-accounts') ?></a>
+								<div class="clear"></div>
+							</div>
+							<? } ?>
 						</div>
-						<? } else { ?>
-						<div class="calc">
-							<div class="text"><?= $bank_instructions['content'] ?></div>
-							<div class="mar_top2"></div>
-							<a class="item_label" href="bank-accounts.php"><i class="fa fa-cog"></i> <?= Lang::string('deposit-manage-bank-accounts') ?></a>
-							<div class="clear"></div>
-						</div>
-						<? } ?>
 					</div>
 				</div>
 			</div>
