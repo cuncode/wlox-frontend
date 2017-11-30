@@ -587,10 +587,10 @@ class Form {
 					continue;
 				}
 				elseif ($elem == '<captcha>') {
-					//if (!empty($CFG->google_recaptch_api_key) && !empty($CFG->google_recaptch_api_secret)) {
-						echo '<li class="'.$alt.'"><div class="g-recaptcha" data-sitekey="6LfofToUAAAAAM_YAubk0r6Y4w40QujjAHdXr6iC"></div></li>';
-					//}
-					/*else {
+					if (!empty($CFG->google_recaptch_api_key) && !empty($CFG->google_recaptch_api_secret)) {
+						echo '<li class="'.$alt.'"><div class="g-recaptcha" data-sitekey="'.$CFG->google_recaptch_api_key.'"></div></li>';
+					}
+					else {
 						echo "
 						<li class=\"$alt\">
 							<div class=\"captcha\">
@@ -600,7 +600,7 @@ class Form {
 								<input type=\"hidden\" name=\"is_caco[{$this->name}]\" value=\"1\">
 							</div>
 						</li>";
-					}*/
+					}
 					continue;
 				}
 				elseif (stristr($elem,'<htmlfield>')) {
@@ -701,15 +701,14 @@ class Form {
 				unset($this->info[$name]);
 			}
 		}
-		//$this->errors[] = $this->capcha_error;
 		
-		/*if (!empty($_REQUEST['is_caco'][$this->name])) {
+		if (!empty($_REQUEST['is_caco'][$this->name])) {
 			include_once 'securimage/securimage.php';
 			$securimage = new Securimage();
 			if ($securimage->check($_REQUEST['caco']) == false) {
 				$this->errors[] = $this->capcha_error;
 			}
-		}*/
+		}
 		
 		if ($this->info && $this->verify_fields) {
 			foreach ($this->info as $name => $value) {
@@ -831,23 +830,18 @@ class Form {
 	
 	function reCaptchaCheck($force=false) {
 		global $CFG;
-		//$this->errors['recaptcha'] = Lang::string('google-recaptcha-error');
-		//$this->errors[] = $this->capcha_error;
-		//return false;
-		//if (empty($CFG->google_recaptch_api_key) || empty($CFG->google_recaptch_api_secret) || (empty($this->info) && !$force))
-			//return false;
+		
+		if (empty($CFG->google_recaptch_api_key) || empty($CFG->google_recaptch_api_secret) || (empty($this->info) && !$force))
+			return false;
 		
 		if (empty($_REQUEST['g-recaptcha-response'])) {
-			/*$this->errors['recaptcha'] = Lang::string('google-recaptcha-error');
-			return false;*/
-			$this->errors[] = $this->capcha_error;
+			$this->errors['recaptcha'] = Lang::string('google-recaptcha-error');
 			return false;
 		}
 		
-		$secretKey = "6LfofToUAAAAAIUKReO7AqxXicFD8p6CKgX4Sb6l";
 		$ip = API::getUserIp();
 		
-		$ch = curl_init('https://www.google.com/recaptcha/api/siteverify?secret='.$secretKey.'&response='.$_REQUEST['g-recaptcha-response'].'&remoteip='.$ip);
+		$ch = curl_init('https://www.google.com/recaptcha/api/siteverify?secret='.$CFG->google_recaptch_api_secret.'&response='.$_REQUEST['g-recaptcha-response'].'&remoteip='.$ip);
 		curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
 		curl_setopt($ch,CURLOPT_FRESH_CONNECT,TRUE);
 		
@@ -856,9 +850,9 @@ class Form {
 		curl_close($ch);
 		
 		if (!is_array($result))
-			$this->errors[] = $this->capcha_error;
+			$this->errors['recaptcha'] = Lang::string('google-recaptcha-connection');
 		elseif ($result['success'] !== true)
-			$this->errors[] = $this->capcha_error;
+			$this->errors['recaptcha'] = Lang::string('google-recaptcha-error');
 		elseif ($result['success'] === true)
 			return true;
 	}
