@@ -62,8 +62,11 @@ include 'includes/head.php';
 </div>
 <div class="fresh_projects login_bg">
 	<div class="clearfix mar_top8"></div>
+	
+<!-- <?= Lang::string('home-login') ?> -->
+	<h2>LOGIN</h2>
 	<div class="container">
-    	<h2><?= Lang::string('home-login') ?></h2>
+    	
     	<? 
     	if (count(Errors::$errors) > 0) {
 			echo '
@@ -85,16 +88,15 @@ include 'includes/head.php';
     	?>
     	<form method="POST" action="login.php" name="login">
 	    	<div class="loginform">
-	    		<img src="images/BTC.svg" alt="">
 	    		<div class="loginform_inputs">
 		    		<div class="input_contain">
-		    			<i class="fa fa-user" style="background-color:#fe510d; width: 10%; text-align:center;padding: 10px;"></i>
-		    			<input type="text" class="login" name="login[user]" value="<?= $user1 ?>">
+		    			<i class="fa fa-user" style="border: 1px; background-color: #1743d7; border-radius: .5em 0 0 .5em; width: 10%; text-align:center;padding: 10px; height: 40px;"></i>
+		    			<input type="text" class="login" name="login[user]" placeholder="Username" value="<?= $user1 ?>">
 		    		</div>
 		    		<div class="separate"></div>
 		    		<div class="input_contain last">
-		    			<i class="fa fa-lock" style="background-color:#fe510d; width: 10%; text-align:center;padding: 10px;"></i>
-		    			<input type="password" class="login" name="login[pass]" value="<?= $pass1 ?>">
+		    			<i class="fa fa-lock" style="border:1px; background-color: #1743d7; border-radius: .5em 0 0 .5em; width: 10%; text-align:center;padding: 10px; height: 40px;"></i>
+		    			<input type="password" class="login" name="login[pass]" placeholder="Password" value="<?= $pass1 ?>">
 		    		</div>
 	    		</div>
 	    		<? if (!empty(User::$attempts) && User::$attempts > 2 && !empty($CFG->google_recaptch_api_key) && !empty($CFG->google_recaptch_api_secret)) { ?>
@@ -105,7 +107,7 @@ include 'includes/head.php';
 	    		<input type="hidden" name="submitted" value="1" />
 	    		<input type="hidden" name="uniq" value="<?= $_SESSION["register_uniq"] ?>" />
 	    		<input type="submit" name="submit" value="<?= Lang::string('home-login') ?>" class="but_user" />
-	    		<a href="forgot.php" style="margin-top: 20px; color: #fff;"><?= Lang::string('forgot-ask') ?></a>
+	    		<a href="forgot.php" style="margin-top: 20px; color: #000;"><?= Lang::string('forgot-ask') ?></a>
 	    	</div>
     	</form>
     	<a class="forgot" href="register.php?"><?= Lang::string('login-dont-have') ?></a>
