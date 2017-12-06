@@ -29,6 +29,7 @@ $bank_account_currency = $CFG->currencies[$bank_account['currency']];
 $pagination = $pagination = Content::pagination('deposit.php',$page1,$total,15,5,false);
 $method = !empty($_REQUEST['method']) ? preg_replace("/[^a-zA-Z0-9\-\.\_]/", "",$_REQUEST['method']) : false;
 $deposit_amount1 = 0;
+$step = (!empty($_REQUEST['step'])) ? $_REQUEST['step'] : 'INIT';
 
 $page_title = Lang::string('deposit');
 
@@ -38,15 +39,21 @@ if ($method) {
 	$gateway = $query['Gateways']['get']['results'][0];
 	$method = (!$gateway) ? false : $method;
 	$deposit_amount1 = (!empty($_REQUEST['deposit_amount'])) ? String::currencyInput($_REQUEST['deposit_amount']) : 0;
-	$submitted = !empty($_REQUEST['submitted']);
+	$deposit_currency1 = (!empty($_REQUEST['deposit_currency'])) ? intval($_REQUEST['deposit_currency']) : false;
 	
-	if ($gateway) {
+	if ($gateway && $step == 'REDIRECT') {
 		$g = new Gateways($method);
-		$url = $g->getUrl();
+		$g->getUrl();
+		$g->redirect();
 		
 		if ($url)
 			Link::redirect($url);
 	}
+}
+
+if (strtolower(parse_url($_SERVER['HTTP_REFERER'],PHP_URL_HOST)) != parse_url($CFG->baseurl,PHP_URL_HOST)) {
+	$g = new Gateways($_SESSION['gateway_method']);
+	$g->receivePaymentInfo();
 }
 
 if (empty($_REQUEST['bypass'])) {
@@ -111,29 +118,63 @@ if (empty($_REQUEST['bypass'])) {
 					</h3>
 					<div class="clear"></div>
 					<div class="buyform">
-						<div class="payment-show-payments <?= $method ? 'hide' : '' ?>">
-							<!--div class="row">
+						<div class="payment-show-payments <?= ($step != 'INIT') ? 'hide' : '' ?>">
+							<div class="row">
 								<div class="payment-box col-md-6">
-									<a href="<?= $CFG->self ?>?method=skrill"><img src="images/skrill-logo.png" /></a>
+									<a href="<?= $CFG->self ?>?method=skrill&step=AMOUNT"><img src="images/skrill-logo.png" /></a>
 								</div>
 								<div class="payment-box col-md-6">
-									<a href="<?= $CFG->self ?>?method=neteller"><img src="images/neteller-logo.png" /></a>
+									<a href="<?= $CFG->self ?>?method=neteller&step=AMOUNT"><img src="images/neteller-logo.png" /></a>
 								</div>
-							</div-->
+							</div>
 							<div class="row">
 								<div class="payment-box payment-box-cc col-md-6">
 									<a href="#"><img src="images/cc.png" /></a>
 								</div>
-								<!--div class="payment-box col-md-6">
-									<a href="<?= $CFG->self ?>?method=webmoney"><img src="images/webmoney.gif" /></a>
-								</div-->
+								<div class="payment-box col-md-6">
+									<a href="<?= $CFG->self ?>?method=webmoney&step=AMOUNT"><img src="images/webmoney.gif" /></a>
+								</div>
 							</div>
+						</div>
+						<div class="payment-show-payments <?= ($step != 'AMOUNT') ? 'hide' : '' ?>">
+							<div class="spacer"></div>
+							<div class="param">
+								<label for="deposit_method"><?= Lang::string('gateway-method-deposit') ?></label>
+								<input type="text" id="deposit_method" name="deposit_method" value="<?= $gateway['name'] ?>" readonly="readonly" />
+								<input type="hidden" name="method" value="<?= $gateway['key'] ?>" />
+								<div class="clear"></div>
+							</div>
+							<div class="param">
+								<label for="deposit_currency"><?= Lang::string('gateway-currency-pay') ?></label>
+								<select id="deposit_currency" name="deposit_currency">
+								<?
+								if ($CFG->currencies) {
+									foreach ($CFG->currencies as $key => $currency) {
+										if (is_numeric($key) || $currency['is_crypto'] == 'Y')
+											continue;
+										
+										echo '<option '.(($currency['id'] == $currencies['c_currency']) ? 'selected="selected"' : '').' value="'.$currency['id'].'">'.$currency['currency'].'</option>';
+									}
+								}	
+								?>
+								</select>
+								<div class="clear"></div>
+							</div>
+							<div class="param">
+								<label for="deposit_amount"><?= Lang::string('gateway-amount-pay') ?></label>
+								<input type="text" id="deposit_amount" name="deposit_amount" value="<?= String::currencyOutput($deposit_amount1) ?>" />
+								<div class="clear"></div>
+							</div>
+							<div class="spacer"></div>
+							<div class="spacer"></div>
+							<div class="spacer"></div>
+							<input type="submit" name="submit" value="<?= Lang::string('deposit') ?>" class="but_user" />
 						</div>
 						<div class="hide payment-show-cc">
 							<div class="spacer"></div>
 							<? if ($bank_accounts) { ?>
 							<div class="param">
-							<label for="deposit_bank_account"><?= Lang::string('deposit-fiat-account') ?></label>
+								<label for="deposit_bank_account"><?= Lang::string('deposit-fiat-account') ?></label>
 								<select id="deposit_bank_account" name="deposit_bank_account">
 								<?
 								$i = 1;
