@@ -7,8 +7,8 @@ $_REQUEST['register']['country'] = (!empty($_REQUEST['register']['country'])) ? 
 $_REQUEST['register']['email'] = (!empty($_REQUEST['register']['email'])) ? preg_replace("/[^0-9a-zA-Z@\.\!#\$%\&\*+_\~\?\-]/", "",$_REQUEST['register']['email']) : false;
 $_REQUEST['register']['default_currency'] = (!empty($_REQUEST['register']['default_currency'])) ? preg_replace("/[^0-9]/", "",$_REQUEST['register']['default_currency']) : false;
 
-if (empty($CFG->google_recaptch_api_key) || empty($CFG->google_recaptch_api_secret))
-	$_REQUEST['is_caco'] = (!empty($_REQUEST['form_name']) && empty($_REQUEST['is_caco'])) ? array('register'=>1) : (!empty($_REQUEST['is_caco']) ? $_REQUEST['is_caco'] : false);
+/*if (empty($CFG->google_recaptch_api_key) || empty($CFG->google_recaptch_api_secret))
+	$_REQUEST['is_caco'] = (!empty($_REQUEST['form_name']) && empty($_REQUEST['is_caco'])) ? array('register'=>1) : (!empty($_REQUEST['is_caco']) ? $_REQUEST['is_caco'] : false);*/
 
 if (empty($_REQUEST['form_name']))
 	unset($_REQUEST['register']);
@@ -71,16 +71,15 @@ $page_title = Lang::string('home-register');
 $_SESSION["register_uniq"] = md5(uniqid(mt_rand(),true));
 include 'includes/head.php';
 ?>
-<div class="" style="width: 100%; float: left; background-color: #006eaf;">
-	<div class="contenedor-registro" style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
-        <h2 style="padding: 4%;color: #ffffff;font-size: 2.5em;">Registrar</h2>
-		<div class="" style="background-color: rgba(255, 255, 255, 0.60); padding: 5%;">
+<div class="registerTitulo" style="width: 100%; float: left; background-color: white;">
+    <h2 style="padding: 4%;color: #fff; background-color: #1743d7; margin-bottom: 30px; margin-top: 0px; text-align: center;">REGISTER</h2>
+    <div class="contenedor-registro" style="width: 50%; margin-left: auto; margin-right: auto; text-align: center;">
+		<div class="" style="box-shadow: 2px 2px 5px black;border-radius:20px;border: 1px solid white;background-color:white; padding: 5%;">
 			<? 
             Errors::display(); 
             Messages::display();
             ?>
             <div class="content content-registrer" style="border: none;">
-            	<img src="images/BTC.svg" alt="BTC" style="margin: 0;width: 50%;padding: 0;">
                 <div class="clear"></div>
                 <?
                 $currencies_list = array();
@@ -104,14 +103,19 @@ include 'includes/head.php';
                 }
                 
 				//$register->textInput('first_name',Lang::string('settings-first-name'),false);
+
+                //
                 //$register->textInput('last_name',Lang::string('settings-last-name'),false);
                 //$register->selectInput('country',Lang::string('settings-country'),false,false,$countries,false,array('name'));
                 $register->textInput('email',Lang::string('settings-email'),'email');
-                $register->selectInput('default_c_currency',Lang::string('default-c-currency'),1,false,$currencies_list1,false,array('currency'));
-                $register->selectInput('default_currency',Lang::string('default-currency'),1,false,$currencies_list,false,array('currency'));
-                $register->checkBox('terms',Lang::string('settings-terms-accept'),false,false,false,false,false,false,'checkbox_label');
-                $register->captcha(Lang::string('settings-capcha'));
-                $register->HTML('<div class="form_button"><input type="submit" name="submit" value="'.Lang::string('home-register').'" class="but_user" style="background: #fe510d;"/></div>');
+                //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,$subtable_f_id=false,$id=false,$class=false,$jscript=false,$style=false,$f_id_field=false,$default_text=false,$depends_on=false,$function_to_elements=false,$static=false,$j=false,$grid_input=false,$first_is_default=false,$level=false)
+                //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,false,false,false,false,false,false,"BTC",false,false,false,false,false,false,false)
+                //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,false,false,false,false,false,false,false,false,false,false,false,false,true,false)
+                $register->selectInput('default_c_currency',Lang::string('default-c-currency'),1,"28",$currencies_list1,false,array('currency'),false,false,false,false,false,false,false,false,false,false,false,false,false,false);
+                $register->selectInput('default_currency',Lang::string('default-currency'),1,"27",$currencies_list,false,array('currency'),false,false,false,false,false,false,false,false,false,false,false,false,false,false);
+                $register->checkBox('terms',Lang::string('settings-terms-accept'),false,false,false,false,false,false,'terms-class checkbox_label');
+                $register->captcha();
+                $register->HTML('<div class="form_button"><input type="submit" name="submit" value="'.Lang::string('home-register').'" class="but_user" style="background: #1743d7;"/></div>');
                 $register->hiddenInput('uniq',1,$_SESSION["register_uniq"]);
                 $register->display();
                 ?>

@@ -54,7 +54,7 @@ elseif (!empty($_REQUEST['settings']) && empty($personal->errors)) {
 	API::send();
 	
 	$_SESSION["firstlogin_uniq"] = md5(uniqid(mt_rand(),true));
-	Link::redirect('account.php?message=settings-personal-message');
+	Link::redirect('bitcoin-addresses.php?message=settings-personal-message');
 }
 else {
 	$personal->info['pass'] = false;

@@ -6,6 +6,15 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="<?= $CFG->language ?>" class="no-js"> <!--<![endif]-->
 
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-86305695-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+<!-- begin adf.ly conversion tracking --><img src="http://adf.ly/ad/conv?aid=905579" width="1" height="1" border="0" hspace="0" vspace="0" style="position: absolute; left: -1000px; top: -1000px;" /><!-- end adf.ly conversion tracking -->
+  gtag('config', 'UA-86305695-6');
+</script>
 	<title><?= $page_title ?></title>
 	<base href="<?= $CFG->baseurl ?>" />
 	
@@ -41,6 +50,8 @@
 	<link rel="stylesheet" media="screen" href="css/responsive-leyouts.css?v=1" type="text/css" />
 
     <link rel="stylesheet" href="css/parallax/style.css" type="text/css" />
+
+    <link rel="stylesheet" media="screen" href="js/particules/css/style.css">
     
 <!-- just remove the below comments witch color skin you want to use -->
     <!--<link rel="stylesheet" href="css/colors/lightblue.css" />-->
@@ -70,6 +81,8 @@
 	<? if ($CFG->self == 'contact.php' || $CFG->self == 'login.php' || $CFG->self == 'register.php' || $CFG->self == 'forgot.php') { ?>
 	<script src='https://www.google.com/recaptcha/api.js<?= ((!empty($CFG->language) && $CFG->language != 'en') ? '?hl='.($CFG->language == 'zh' ? 'zh-CN' : $CFG->language) : '') ?>'></script>
 	<? } ?>
+
+    
 	
 	<?= Lang::url($CFG->self,1); ?>
 </head>
@@ -138,12 +151,14 @@
 </script>
 
 <div class="site_wrapper">
+
+     
    
 <!-- HEADER -->
-<header id="header">
+<header id="header" style="background-color: #1743d7;">
 
 	<!-- Top header bar -->
-	<div id="topHeader" style="display:none;">
+	<div id="topHeader" style="display:none; background-color: #1743d7;">
     
 	 <div class="wrapper">
          
@@ -168,7 +183,7 @@
 	</div>
 	
     
-	<div id="trueHeader">
+	<div id="trueHeader" style="background-color: #1743d7;">
     
 	<div class="wrapper">
     
@@ -237,27 +252,27 @@
 	                <? } ?>
                 </ul>
                 <ul class="tci_list">
-                    <li class="empty margin-left">
-                        <label for="language_selector" style="display: none;"><img src="images/<?= $CFG->language ?>.png" /></label>
-                        <select id="language_selector" class="lang">
-                            <option value="en" <?= ($CFG->language == 'en') ? 'selected="selected"' : '' ?>>ENG.</option>
-                            <!--option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option-->
-                            <option value="es" <?= ($CFG->language == 'es') ? 'selected="selected"' : '' ?>>ESP.</option>
-                            <!--option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option-->
-                            <!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
-                        </select>
-                    </li>
-                        <img src="images/idioma.png" alt="">
+                    
                     <? if (!User::isLoggedIn()) { ?>
-                    <a href="login.php" style="margin-right: 10px;"><img src="images/login.png" width="30" height="30" alt=""><!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
-                    <a href="<?= Lang::url('register.php') ?>"><img src="images/registro.png" width="30" height="30" alt=""><!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
+                    <a href="<?= Lang::url('register.php') ?>" style="margin-right: 10px; color: #FF6543; font-size: 20px;">REGISTER<!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
+                    <a href="login.php" style="margin-right: 10px; font-size: 20px; color: #FF6543; margin-top: 10px;">LOGIN<!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
                     <? } else { ?>
                     <li>
                         <!-- <a href="account.php"><i class="fa fa-user" style="margin-top: 5px;"></i> <?= User::$info['email'] ?></a>  -->
                         <a href="logout.php?log_out=1&uniq=<?= $_SESSION["logout_uniq"] ?>"><i class="fa fa-unlock"></i> <?= Lang::string('log-out') ?></a>
                     </li>
                     <? } ?>
+                    <!--     background-image: url(images/en.png); -->
                     <!-- <i class="glyphicon glyphicon-menu-down" style="position: absolute;right: 10px; display: block; color: #006eaf; font-size: 1em;"></i> -->
+                    <li <?= ($CFG->language == 'en') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=en" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/en.png" /></a></li>
+                    <li <?= ($CFG->language == 'es') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=es" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/es.png" /></a></li>
+                    <!-- <li>
+                        <img width="30px" src="images/<?= $CFG->language ?>.png" />
+                        <ul  style="background:none; width:auto!important;">
+                            <li <?= ($CFG->language == 'en') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=en" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/en.png" /></a></li>
+                            <li <?= ($CFG->language == 'es') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=es" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/es.png" /></a></li>
+                        </ul> 
+                    </li> -->
                 </ul>
             </div>
             

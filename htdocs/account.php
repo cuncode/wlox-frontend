@@ -64,6 +64,7 @@ include 'includes/head.php';
 				<li><a href="buy-sell.php" class="but_user"><i class="fa fa-btc fa-lg"></i> <?= Lang::string('buy-sell') ?></a></li>
 				<li><a href="deposit.php" class="but_user"><i class="fa fa-download fa-lg"></i> <?= Lang::string('deposit') ?></a></li>
 				<li><a href="withdraw.php" class="but_user"><i class="fa fa-upload fa-lg"></i> <?= Lang::string('withdraw') ?></a></li>
+                <li><a href="bitcoin-addresses.php?action=add&c_currency=<?= $c_currency ?>&uniq=<?= $_SESSION["btc_uniq"] ?>" class="but_user"><i class="fa fa-plus fa-lg"></i> <?= Lang::string('bitcoin-addresses-add') ?></a></li>
 			</ul>
 			<div class="clear"></div>
             <div class="content">

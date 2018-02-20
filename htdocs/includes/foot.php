@@ -98,6 +98,8 @@
 <script type="text/javascript" src="js/flot/jquery.flot.candle.js"></script>
 
 <script type="text/javascript" src="js/parallax/jquery.particleground.js"></script>
+<script type="text/javascript" src="js/particules/js/particles.js"></script>
+<script type="text/javascript" src="js/particules/js/app.js"></script>
 <script>
 $('#parallax').particleground({
     dotColor: '#ffffff',
@@ -135,7 +137,7 @@ $('#parallax').particleground({
                     showPush('section').removeClass('scala8').addClass('scala1');
                     setTimeout(function() {
                             showPush('section').removeClass('scala8').removeClass('scala1');
-                    }, 1000)                        
+                    }, 0)                        
                     showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
                     showPush('.redes').removeClass('block').fadeOut("fast");
                     showPush('#showPush').removeClass('tcon-transform');
@@ -144,7 +146,7 @@ $('#parallax').particleground({
                             showPush('#menuM').removeClass('navOpen');
                             showPush('.navIcons').removeClass('block');
                             showPush('.navIcons a').removeClass('fadeOut');
-                    }, 1300);
+                    }, 0);
                     showPush('.navIcons').removeClass('fadeIn');
                 }
                 else {
@@ -152,20 +154,20 @@ $('#parallax').particleground({
                     showPush('#menuM').addClass('navOpen');
                     setTimeout(function() {
                         showPush('section').removeClass('scala1').addClass('scala8');
-                    }, 200);                    
+                    }, 0);                    
                     showPush('#showPush').addClass('tcon-transform');
                     setTimeout(function() {
                             showPush('.navIcons').addClass('block');
                             showPush('.navIcons a').addClass('fadeIn');
                             showPush('.redes').addClass('block').fadeIn("fast");
-                    }, 500);
+                    }, 0);
                 }
             });
             showPush('.overlayClick').on('click',function(){
                 showPush('section').removeClass('scala8').addClass('scala1');
                 setTimeout(function() {
                     showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 700);                
+                }, 0);                
                 showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
                 showPush('.redes').removeClass('block').fadeOut("fast");
                 showPush('#showPush').removeClass('tcon-transform');
@@ -175,7 +177,7 @@ $('#parallax').particleground({
                         showPush('.navIcons').removeClass('block');
                         showPush('.navIcons a').removeClass('fadeOut');
                         showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 1700);
+                }, 0);
                 showPush('.navIcons').removeClass('fadeIn');
             });         
         </script>

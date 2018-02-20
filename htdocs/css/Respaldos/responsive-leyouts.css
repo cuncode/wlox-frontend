@@ -13,14 +13,14 @@
 
 
 @media only screen and (min-width: 1170px){
-	.mobilebanner { /*height: 550px;padding: 100px 0 0 0;*/}
+	.mobilebanner { height: 550px;padding: 100px 0 0 0;}
 	.mobilebanner h1 { font-size:58px;margin-bottom: 20px;}
 	.mobilebanner .text { font-size: 16px;line-height: 26px;}
 	.m_head {display:none;}
 }
 
 @media only screen and (max-width: 1169px){
-	.mobilebanner .container {padding-bottom: 117px;}
+	.mobilebanner .container {padding-bottom: 94px;}
 	.container_full{
 		height: 400px;
 	}
@@ -29,7 +29,7 @@
 @media only screen and (min-width: 1000px) and (max-width: 1169px){
 
 .mobilebanner{
-	top: -385px;
+	top: -360px;
 }
 
 
@@ -135,10 +135,6 @@ ul.post_meta_links {
 	width: 280px;
 }
 
-.registerTitulo h2{
-	font-size: 44px;
-}
-
 .global_stats .stat1 {font-size:18px !important;}
 .global_stats .stat2 {font-size:18px !important;}
 .m_head {display:none;}
@@ -150,7 +146,7 @@ ul.post_meta_links {
 	width: 100%;
 }
 .mobilebanner{
-	top: -383px;
+	top: -360px;
 }
 .tci_list_left li {
 	margin: 7px 0px 0px 0px;
@@ -172,7 +168,6 @@ ul.post_meta_links {
 .tci_list li a {
 	width: 82px;
 	height: 22px;
-	margin-top: 0px !important;
 	line-height: 22px;
 }
 
@@ -497,7 +492,7 @@ a.show_hide{
 #access .menu ul {
 	margin: auto;
 	list-style-type: none;
-	z-index: 0;
+	z-index: 1001;
 	height: 54px;
 }
 }
@@ -505,10 +500,6 @@ a.show_hide{
 @media only screen and (min-width: 480px) and (max-width: 767px){
 .form ul li input,.form select{
 	width: 220px;
-}
-
-.registerTitulo h2{
-	font-size: 30px;
 }
 #access .menu ul {
 	margin: auto;
@@ -524,7 +515,7 @@ a.show_hide{
 	padding-bottom: 40px;
 }
 .container_full{
-	height: 505px;
+	height: 485px;
 }
 .sidebar_widget ul.arrows_list1{
 	float: left;
@@ -536,13 +527,10 @@ ul li {
 	
 .input-group .form-control{
 	margin-bottom: 10px;
-	border-radius: 6px !important;
 }
 
 .input-group .input-group-addon{
 	display: inherit;
-	width: 100%;
-	border-radius: 6px !important;
 }
 	
 /* Disable menu */
@@ -551,15 +539,13 @@ ul li {
 .selectnav{display: none !important;}
 #access .menu select {
 	font-size: 20px;
-	background-color: #1743d7;
-	color: #fff;
+	background-color: transparent;
+	color: #03A9F4;
 	width: 100%;
 	border: none;
 	margin: -35px 45px 10px 0px;
 	float: left;
 	margin: auto;
-	position: relative;
-    top: 0px;
 }
 
 /*#access .menu ul.tci_list {display: none;} M604*/
@@ -582,7 +568,7 @@ ul li {
 	height:0;
 }
 .mobilebanner{
-	top: -428px;
+	top: -485px;
 	display:block;
 }
 .mobilebanner .text{
@@ -594,7 +580,7 @@ a.button_slider {
 
 .container, .container-header {
 	width: 100%;
-	padding: 173px !important;
+	padding: 0px;
 }
 
 .content_left {
@@ -671,7 +657,7 @@ a.button_slider {
     width: 146px;
     margin-top: 6px;
     text-indent: -999em;
-    background: url(../images/BTCGrises2.svg) no-repeat left bottom !important;
+    background: url(../images/btctrade.png) no-repeat left bottom !important;
     background-size: cover !important;
 }
 #trueHeader #logo{
@@ -1206,7 +1192,7 @@ a.show_hide{
 .lirc_section li.right {
 	width: 71%;
 }
-#header.sticky{height: 136px !important; background-color: #1743d7;}
+#header.sticky{height: 150px !important; background-color: #fff;}
 
 }
 
@@ -1218,18 +1204,12 @@ a.show_hide{
 
 	.input-group .form-control{
 	margin-bottom: 10px;
-	border-radius: 6px !important;
-}
-.g-recaptcha{
-	margin-left: -6px;
 }
 #trueHeader #logo{
 	float: none;
 }
 .input-group .input-group-addon{
 	display: inherit;
-	width: 100%;
-	border-radius: 6px !important;
 }
 .sidebar_widget ul.arrows_list1{
 	float: left;
@@ -1253,14 +1233,12 @@ ul li {
 .selectnav{display: none !important;}
 #access .menu select {
 	font-size: 20px;
-	background-color: #1743d7;
+	background-color: transparent;
 	border:none;
-	color: #fff;
+	color: #03A9F4;
 	width: 100%;
 	margin: auto;
 	float: left;
-	position: relative;
-    top: 0px;
 }
 
 #header.sticky {height:103px !important;}
@@ -1289,7 +1267,7 @@ ul li {
 }
 .mobilebanner{
 	display:block;
-	top: 268px;
+	top: -584px;
 }
 
 .mobilebanner .text{
@@ -1367,7 +1345,7 @@ ul li {
 #trueHeader #logo{
 	margin-top: 9px;
 	margin-bottom: 22px;
-	background:url(../images/BTCGrises2.svg) no-repeat center top;
+	background:url(../images/logo.png) no-repeat center top;
 }
 
 
@@ -1380,7 +1358,7 @@ ul li {
 	font-size: 11px;
 }
 .tci_list li {
-	margin: 0px 0px 0px 2px;
+	margin: 9px 0px 0px 2px;
 	font-size: 12px;
 }
 .tci_list li.empty {
@@ -2098,7 +2076,7 @@ a.show_hide{
 .form ul li .checkbox_label {
 	left:5px;
 }
-	#header.sticky{height: 153px !important; background-color: #1743d7;}
+	#header.sticky{height: 170px !important; background-color: #fff;}
 .list_empty li{
 	margin: 0px 0px 35px 0px;
 }
@@ -2106,7 +2084,7 @@ a.show_hide{
 	padding-bottom: 54px;
 }
 .ticker{
-	top: 475px;
+	top: 107%;
 }
 .table-list{
 	font-size: 8px;
@@ -2149,10 +2127,10 @@ a.show_hide{
 	.form3 .captcha input{
 		width: 70% !important;
 		margin: 0;
-		top: 17px;
 	}
 	.form3 ul li label{
 		margin: 0;
+		padding: 1em !important;
 	}
 	.form3 ul li input{
 		width: 70%;
@@ -2177,16 +2155,10 @@ a.show_hide{
 }
 @media only screen and (max-width: 730px){
 	.form3 ul li:nth-child(2) select,.form3 ul li:nth-child(3) select{
-		
+		height: 68px;
 	}
 	.form3 ul li:nth-child(2) label,.form3 ul li:nth-child(3) label{
-		
-	}
-	.registerTitulo h2{
-	font-size: 55px;
-}
-.login_bg h2{
-		font-size: 30px;	
+		height: 68px;
 	}
 }
 @media only screen and (max-width: 530px){
@@ -2196,25 +2168,10 @@ a.show_hide{
 	.form3 ul li:nth-child(4) label{
 		width: 90% !important;
 	}
-	.registerTitulo h2{
-	font-size: 44px;
-}
-.login_bg h2{
-		font-size: 30px;	
-	}
 }
 @media only screen and (max-width: 460px){
 	.form3 ul li:nth-child(2) label,.form3 ul li:nth-child(3) label{
 		padding-top: 5px !important;
-	}
-	.registerTitulo h2{
-	font-size: 30px;
-	}
-	.login_bg h2{
-		font-size: 30px;	
-	}
-	.mar_top8{
-		margin-top: 10px;
 	}
 }
 /* @media only screen and (max-width: 1285px){

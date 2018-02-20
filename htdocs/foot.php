@@ -11,7 +11,7 @@
 	
 	<form name="register" action="register.php">
 		<div class="input-group input-group-lg start-div">
-	        <input type="text" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
+	        <input type="text" class="form-control" autofocus="none" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
 	        <button type="submit" class="input-group-addon" id="addon-start-div">COMIENZA A GANAR!</button> 
 	    </div>
     </form>

@@ -155,7 +155,7 @@ $(document).ready(function() {
 	    } else {
 	      $messages.append($el);
 	    }
-	    $messages[0].scrollTop = $messages[0].scrollHeight;
+	    $messages[0].scrollTop = $messages[0].scrollHeightf;
 	  }
 	
 	  // Prevents input from having injected markup

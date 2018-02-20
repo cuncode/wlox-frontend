@@ -72,8 +72,8 @@ include 'includes/head.php';
 if (!User::isLoggedIn()) {
 ?>
 
-
-<div class="container_full" id="parallax" >
+	
+<div class="container_full" id="particles-js" >
 	<?php 
 	if ($CFG->language == 'en' || $CFG->language == 'es' || $CFG->language == 'pt' || empty($CFG->language))
 		$wordwrap = 80;
@@ -96,7 +96,7 @@ if (!User::isLoggedIn()) {
 			    </div>
 		    </form>
 			
-			<p class="text" style="text-align: center;"><?= wordwrap(strip_tags($content['content']),$wordwrap,'<br/>') ?> <a class="morestuff" href="<?= Lang::url('about.php') ?>">>></a></p>
+			<p class="text" style="text-align: center; background: transparent;"><?= wordwrap(strip_tags($content['content']),$wordwrap,'<br/>') ?> <a class="morestuff" href="<?= Lang::url('about.php') ?>">>></a></p>
 			<!--
 			<a href="login.php" class="button_slider"><i class="fa fa-key"></i>&nbsp;&nbsp;<?= Lang::string('home-login') ?></a>       
 			<a href="<?= Lang::url('register.php') ?>" class="button_slider"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= Lang::string('home-register') ?></a>
