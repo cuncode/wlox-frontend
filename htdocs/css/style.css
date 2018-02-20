@@ -5552,6 +5552,29 @@ body{font:12px/28px ;}
 .text{
 	background-color: rgba(0,140,220,0.1);
 }
+<<<<<<< HEAD
+=======
+
+.payment-box{
+	margin-top:20px;
+}
+.payment-box a{
+	background-color:#FFF;
+	border:1px solid #ddd;
+	display:block;
+}
+.payment-box a img{
+	width: 80%;
+    margin-left: 8%;
+    height: 125px;
+}
+.payment-box-cc img{
+	position: relative;
+    width: 184% !important;
+    right: 50%;
+}
+
+>>>>>>> 8b27fd66cf07da640ba691f911408546114621e8
 .g-recaptcha{
 	width: 68%;
     text-align: center;
@@ -5559,4 +5582,8 @@ body{font:12px/28px ;}
 }
 .terms-class{
 	margin-left: 27% !important;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8b27fd66cf07da640ba691f911408546114621e8

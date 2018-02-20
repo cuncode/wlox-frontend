@@ -16,6 +16,7 @@ if ($referer == 'login.php' || $referer == 'verify-token.php' || $referer == 'fi
 		$_SESSION['c_currency'] = User::$info['default_c_currency'];
 
 	API::add('User','notifyLogin');
+	$query = API::send();
 }
 else if ($referer == 'first_login.php')
 	API::add('User','disableNeverLoggedIn');

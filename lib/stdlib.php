@@ -139,6 +139,9 @@ if (!function_exists('mb_strlen')) {
 		return preg_match_all("/.{1}/us",$utf8string,$dummy);
 	}
 }
+function debug($something) {
+	error_log(print_r(array($something),1),3,ini_get('error_log'));
+}
 /*
 if (function_exists('rename_function')) {
 	rename_function('number_format','number_format1');

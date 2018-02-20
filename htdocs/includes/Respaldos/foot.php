@@ -7,18 +7,12 @@
 
 	<div class="arrow_02"></div>
 
-    <h2><?= Lang::string('hora-negocios') ?></h2>
+    <h2>!Es hora de hacer buenos negocios!</h2>
 
-	<form name="register" action="register.php">
-		<input type="hidden" name="start" value="1" />
-		<div class="input-group input-group-lg start-div">
-	        <input type="text" name="email" class="form-control" placeholder="<?= Lang::string('escribe-correo') ?>" aria-describedby="basic-addon2">
-	        <span class="input-group-addon" id="addon-start-div">
-	        	<?= Lang::string('comienza-ganar') ?>
-	        	<input type="submit" name="submit" /> 
-	        </span>
-	    </div>
-    </form>
+	<div class="input-group input-group-lg start-div">
+        <input type="text" class="form-control" placeholder="Escribe tu correo electrónico" aria-describedby="basic-addon2">
+        <span class="input-group-addon" id="addon-start-div">COMIENZA A GANAR!</span> 
+    </div>
     
     <div id="footer-nav" class="footer-nav">
                 
@@ -88,7 +82,7 @@
 <script type="text/javascript" src="js/chat.js?v=20151202"></script>
 
 <!-- main js -->
-<script type="text/javascript" src="js/ops.js?v=2"></script>
+<script type="text/javascript" src="js/ops.js?v=20160210"></script>
 
 <? if ($CFG->self == 'index.php' || $CFG->self == 'order-book.php' || $CFG->self == 'btc_to_currency.php') { ?>
 <!-- flot -->
@@ -98,8 +92,6 @@
 <script type="text/javascript" src="js/flot/jquery.flot.candle.js"></script>
 
 <script type="text/javascript" src="js/parallax/jquery.particleground.js"></script>
-<script type="text/javascript" src="js/particules/js/particles.js"></script>
-<script type="text/javascript" src="js/particules/js/app.js"></script>
 <script>
 $('#parallax').particleground({
     dotColor: '#ffffff',
@@ -129,7 +121,7 @@ $('#parallax').particleground({
 
 
 </script>
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script>
             var showPush = jQuery.noConflict();
             showPush('#showPush').on('click',function(){
@@ -137,7 +129,7 @@ $('#parallax').particleground({
                     showPush('section').removeClass('scala8').addClass('scala1');
                     setTimeout(function() {
                             showPush('section').removeClass('scala8').removeClass('scala1');
-                    }, 0)                        
+                    }, 1000)                        
                     showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
                     showPush('.redes').removeClass('block').fadeOut("fast");
                     showPush('#showPush').removeClass('tcon-transform');
@@ -146,7 +138,7 @@ $('#parallax').particleground({
                             showPush('#menuM').removeClass('navOpen');
                             showPush('.navIcons').removeClass('block');
                             showPush('.navIcons a').removeClass('fadeOut');
-                    }, 0);
+                    }, 1300);
                     showPush('.navIcons').removeClass('fadeIn');
                 }
                 else {
@@ -154,20 +146,20 @@ $('#parallax').particleground({
                     showPush('#menuM').addClass('navOpen');
                     setTimeout(function() {
                         showPush('section').removeClass('scala1').addClass('scala8');
-                    }, 0);                    
+                    }, 200);                    
                     showPush('#showPush').addClass('tcon-transform');
                     setTimeout(function() {
                             showPush('.navIcons').addClass('block');
                             showPush('.navIcons a').addClass('fadeIn');
                             showPush('.redes').addClass('block').fadeIn("fast");
-                    }, 0);
+                    }, 500);
                 }
             });
             showPush('.overlayClick').on('click',function(){
                 showPush('section').removeClass('scala8').addClass('scala1');
                 setTimeout(function() {
                     showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 0);                
+                }, 700);                
                 showPush('.navIcons a').removeClass('fadeIn').addClass('fadeOut');
                 showPush('.redes').removeClass('block').fadeOut("fast");
                 showPush('#showPush').removeClass('tcon-transform');
@@ -177,7 +169,7 @@ $('#parallax').particleground({
                         showPush('.navIcons').removeClass('block');
                         showPush('.navIcons a').removeClass('fadeOut');
                         showPush('section').removeClass('scala8').removeClass('scala1');
-                }, 0);
+                }, 1700);
                 showPush('.navIcons').removeClass('fadeIn');
             });         
         </script>

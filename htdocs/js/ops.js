@@ -2627,6 +2627,12 @@ $(document).ready(function() {
 		shareControls();
 	}
 	
+	$('.payment-box-cc').click(function(e){
+		e.preventDefault();
+		$('.payment-show-cc').removeClass('hide');
+		$('.payment-show-payments').addClass('hide');
+	});
+	
 	$('.change_c_currency,#c_currency').bind("keyup change", function(){
 		window.location.href = window.location.pathname+'?c_currency='+$(this).val();
 	});
