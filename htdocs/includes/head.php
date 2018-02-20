@@ -254,13 +254,8 @@
                 <ul class="tci_list">
                     
                     <? if (!User::isLoggedIn()) { ?>
-<<<<<<< HEAD
                     <a href="<?= Lang::url('register.php') ?>" style="margin-right: 10px; color: #FF6543; font-size: 20px;">REGISTER<!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
                     <a href="login.php" style="margin-right: 10px; font-size: 20px; color: #FF6543; margin-top: 10px;">LOGIN<!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
-=======
-                    <a href="<?= Lang::url('register.php') ?>" style="margin-right: 10px; color: #FE510C; font-size: 20px;">Register<!-- <i class="fa fa-user"></i> <?= Lang::string('home-register') ?>--></a>
-                    <a href="login.php" style="margin-right: 10px; font-size: 20px; color: #FE510C; margin-top: 10px;">Login<!-- <i class="fa fa-key"></i> <?= Lang::string('home-login') ?> --></a>
->>>>>>> 8b27fd66cf07da640ba691f911408546114621e8
                     <? } else { ?>
                     <li>
                         <!-- <a href="account.php"><i class="fa fa-user" style="margin-top: 5px;"></i> <?= User::$info['email'] ?></a>  -->
@@ -269,7 +264,6 @@
                     <? } ?>
                     <!--     background-image: url(images/en.png); -->
                     <!-- <i class="glyphicon glyphicon-menu-down" style="position: absolute;right: 10px; display: block; color: #006eaf; font-size: 1em;"></i> -->
-<<<<<<< HEAD
                     <li <?= ($CFG->language == 'en') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=en" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/en.png" /></a></li>
                     <li <?= ($CFG->language == 'es') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=es" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/es.png" /></a></li>
                     <!-- <li>
@@ -279,18 +273,6 @@
                             <li <?= ($CFG->language == 'es') ? 'style="display:none"' : '' ?>><a href="<?=explode('?', $_SERVER['REQUEST_URI'], 2)[0]?>?lang=es" style="background:none;width: auto;border: none;margin: 0px;padding: 0px !important;"><img width="30px" src="images/es.png" /></a></li>
                         </ul> 
                     </li> -->
-=======
-                    <li class="empty margin-left">
-                        <label for="language_selector" style="display: none;"><img src="images/<?= $CFG->language ?>.png" /></label>
-                        <select id="language_selector" class="lang" style="color: #FE510C; ">
-                            <option style="border: none;" value="en" <?= ($CFG->language == 'en') ? 'selected="selected"' : '' ?>>ENG.</option>
-                            <!--option value="pt" <?= ($CFG->language == 'pt') ? 'selected="selected"' : '' ?>>Português</option-->
-                            <option style="border: none;" value="es" <?= ($CFG->language == 'es') ? 'selected="selected"' : '' ?>>ESP.</option>
-                            <!--option value="ru" <?= ($CFG->language == 'ru') ? 'selected="selected"' : '' ?>>Pусский</option-->
-                            <!--option value="zh" <?= ($CFG->language == 'zh') ? 'selected="selected"' : '' ?>>中文</option-->
-                        </select>
-                    </li>
->>>>>>> 8b27fd66cf07da640ba691f911408546114621e8
                 </ul>
             </div>
             

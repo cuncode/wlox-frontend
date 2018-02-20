@@ -108,16 +108,11 @@ include 'includes/head.php';
                 //$register->textInput('last_name',Lang::string('settings-last-name'),false);
                 //$register->selectInput('country',Lang::string('settings-country'),false,false,$countries,false,array('name'));
                 $register->textInput('email',Lang::string('settings-email'),'email');
-<<<<<<< HEAD
                 //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,$subtable_f_id=false,$id=false,$class=false,$jscript=false,$style=false,$f_id_field=false,$default_text=false,$depends_on=false,$function_to_elements=false,$static=false,$j=false,$grid_input=false,$first_is_default=false,$level=false)
                 //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,false,false,false,false,false,false,"BTC",false,false,false,false,false,false,false)
                 //($name,$caption=false,$required=false,$value=false,$options_array=false,$subtable=false,$subtable_fields=false||||,false,false,false,false,false,false,false,false,false,false,false,false,true,false)
                 $register->selectInput('default_c_currency',Lang::string('default-c-currency'),1,"28",$currencies_list1,false,array('currency'),false,false,false,false,false,false,false,false,false,false,false,false,false,false);
                 $register->selectInput('default_currency',Lang::string('default-currency'),1,"27",$currencies_list,false,array('currency'),false,false,false,false,false,false,false,false,false,false,false,false,false,false);
-=======
-                $register->selectInput('default_c_currency',Lang::string('default-c-currency'),1,false,$currencies_list1,false,array('currency'));
-                $register->selectInput('default_currency',Lang::string('default-currency'),1,false,$currencies_list,false,array('currency'));
->>>>>>> 8b27fd66cf07da640ba691f911408546114621e8
                 $register->checkBox('terms',Lang::string('settings-terms-accept'),false,false,false,false,false,false,'terms-class checkbox_label');
                 $register->captcha();
                 $register->HTML('<div class="form_button"><input type="submit" name="submit" value="'.Lang::string('home-register').'" class="but_user" style="background: #1743d7;"/></div>');
